@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+    image: apache
+    build: ./
+    container_name: apache_docker
+    restart: always
+    ports:
+      - "8080:80"
