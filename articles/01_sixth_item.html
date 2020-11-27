@@ -5,66 +5,128 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html>
-	<head>
-		<title>Generic - Binary by TEMPLATED</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-	</head>
-	<body>
+<head>
+    <title>Generic - Binary by TEMPLATED</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../assets/css/main.css"/>
+</head>
+<body>
 
-		<!-- Header -->
-			<header id="header">
-				<a href="../index.html" class="logo"><strong>Binary</strong> by TEMPLATED</a>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
+<!-- Header -->
+<header id="header">
+    <a href="../index.html" class="logo"><strong>Binary</strong> by TEMPLATED</a>
+    <nav>
+        <a href="#menu">Menu</a>
+    </nav>
+</header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="../index.html">Home</a></li>
-					<li><a href="../generic.html">Generic</a></li>
-					<li><a href="../elements.html">Elements</a></li>
-				</ul>
-			</nav>
+<!-- Nav -->
+<nav id="menu">
+    <ul class="links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../generic.html">Generic</a></li>
+        <li><a href="../elements.html">Elements</a></li>
+    </ul>
+</nav>
 
-		<!-- Main -->
-			<section id="main">
-				<div class="inner">
-					<div class="image fit">
-						<img src="../images/pic11.jpg" alt="" />
-					</div>
-					<header>
-						<h1>Lorem ipsum dolor sit amet</h1>
-						<p class="info">3 days ago by <a href="#">Jane Doe</a></p>
-					</header>
-					<p>Nullam posuere erat vel placerat rutrum. Praesent ac consectetur dui, et congue quam. Donec aliquam lacinia condimentum. Integer porta massa sapien, commodo sodales diam suscipit vitae. Aliquam quis felis sed urna semper semper. Phasellus eu scelerisque mi. Vivamus aliquam nisl libero, sit amet scelerisque ligula laoreet vel. Nunc ullamcorper ipsum at diam congue luctus. Sed nec sapien blandit, tempor quam non, consectetur turpis. Morbi libero lorem, hendrerit sed metus non, malesuada placerat nulla. Sed nisi turpis, rutrum eget rutrum euismod, consequat ullamcorper eros. Quisque tortor nunc, sodales convallis nisl non, bibendum tincidunt tortor. Etiam pellentesque tincidunt nunc, a dignissim dolor tempus et. Pellentesque in urna ligula. Fusce ligula velit, mollis ac diam non, rutrum fringilla turpis.</p>
-					<p>Aliquam consequat, nulla sed sodales convallis, sem odio porttitor justo, non volutpat augue libero eget neque. Nunc consequat arcu nec tortor venenatis tempus a placerat mauris. Nam ultricies consequat ligula, et placerat arcu ultrices a. Sed placerat ipsum lacus, at imperdiet nisi imperdiet at. Vivamus diam dui, accumsan quis lacinia ac, sollicitudin feugiat metus. Vestibulum a velit ac eros blandit molestie non eget erat. Nunc eget odio erat. Nulla sit amet enim pharetra tortor molestie tempor nec sed turpis. Cras eget odio at erat dictum tincidunt. Sed facilisis convallis mi, eget tempor nunc pellentesque pulvinar. Etiam volutpat luctus tristique.</p>
-					<p>Aliquam erat eros, pretium non facilisis id, mollis a lacus. Nam nunc nisl, consequat at est vel, ornare feugiat tortor. Phasellus tempor ex vel mi blandit convallis. Sed accumsan sapien quis bibendum posuere. Vivamus convallis mattis ipsum. Suspendisse viverra purus non mi cursus, vitae pulvinar dui condimentum. Donec dui lacus, pretium in neque vitae, laoreet tempus nulla. Maecenas ac augue bibendum, consectetur ante eu, vulputate ipsum.</p>
-					<p>Nullam volutpat, sem at hendrerit volutpat, magna orci facilisis purus, et venenatis sapien sapien pretium libero. Duis hendrerit eget metus at molestie. Duis leo lorem, interdum a placerat ut, ullamcorper at eros. Donec convallis auctor cursus. Integer placerat felis mauris, sed cursus diam sodales et. Phasellus mi nibh, scelerisque vulputate viverra ut, dictum vitae mi. In at blandit felis. Aenean id porttitor neque. Nam bibendum a orci non pretium. Pellentesque feugiat erat augue, quis venenatis diam mollis eu.</p>
-				</div>
-			</section>
+<!-- Main -->
+<section id="main">
+    <div class="inner">
 
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-				</ul>
-				<div class="copyright">
-					&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
-				</div>
-			</footer>
+        <header>
+            <h1>Why Missigno. clones the sixth item?</h1>
+            <p class="info">November/2020 <a href="#">Javier Cabezas</a></p>
+        </header>
+        <p>
+            One of the most well-known effects of encountering Missigno. is the duplication of the sixth item
+            of the player's bag. This was a really easy method to get an infinite amount of rare items such
+            as Master Balls, Rare Candies, TMs and Moon Stones.
+        </p>
+        <p>
+            To understand the technical reason of the item duplication the first step is to learn about how
+            the game stores the pokémon pokédex data. Each pokémon on the list has two different boolean values
+            related to their relationship with the player: one value for seen/unseen and another one for
+            captured/not captured. This creates 3 different states: non seen and non captured, seen but not captured,
+            captured and seen. The state "captured but not seen" its not possible to recreate in game.
+        </p>
+        <div class="image fit">
+            <img src="../images/01_pokedex.png" alt="Pokédex"/>
+            <blockquote>
+                Pokédex example. In this picture bulbasaur is seen, but not captured. Squirtle (the best
+                starter) is both captured and seen. Ivysaur, venusaur, charmander, etc. are neither seen or
+                captured.
+            </blockquote>
+        </div>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
-			<script src="../assets/js/skel.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+        <h4>"Seen" bit</h4>
+        <p>
+            So, if we go to the memory address <i>D2F7<sub>16</sub></i> you can find a byte that determine
+            the seen bit for the 8 first pokémon (from bulbasaur to wartortle). In the case of my game, the
+            current value in this memory address is <i>40<sub>16</sub></i>.
+        </p>
+        <div class="image fit">
+            <img src="../images/01_ram_01.png" alt="Memory map"/>
+            <blockquote>
+                Selected on the lower part of the picture the current value of <i>40<sub>16</sub></i> is shown
+            </blockquote>
+        </div>
+        <p>
+            How can that be translated into the picture of the pokédex shown? If we transform the 40 from
+            hexadecimal to binary we get <i>40<sub>16</sub></i> = <i>0100 0000<sub>2</sub></i>
+        </p>
+        <p>
+            Since the game-boy works with little endian (basically, by reading the memory in reverse) this
+            <i>seen bits</i> are translated like this table:
+        </p>
+        <div class="table-wrapper">
+            <table class="alt">
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+                </tr>
+				<tr>
+					<td> <img src="../images/common/sprites/rb_01_bulbasaur.png" alt="Bulbasaur"/> </td>
+					<td> <img src="../images/common/sprites/rb_02_ivysaur.png" alt="Ivysaur"/> </td>
+					<td> <img src="../images/common/sprites/rb_03_venusaur.png" alt="Venusaur"/> </td>
+					<td> <img src="../images/common/sprites/rb_04_charmander.png" alt="Charmander"/> </td>
+					<td> <img src="../images/common/sprites/rb_05_charmeleon.png" alt="Charmeleon"/> </td>
+					<td> <img src="../images/common/sprites/rb_06_charizard.png" alt="Charizard"/> </td>
+					<td> <img src="../images/common/sprites/rb_07_squirtle.png" alt="Squirtle"/> </td>
+					<td> <img src="../images/common/sprites/rb_08_wartortle.png" alt="Wartortle"/></td>
+				</tr>
+                </tbody>
+            </table>
+        </div>
+		<p>So, </p>
+    </div>
+</section>
 
-	</body>
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    </ul>
+    <div class="copyright">
+        &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/jquery.scrolly.min.js"></script>
+<script src="../assets/js/skel.min.js"></script>
+<script src="../assets/js/util.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
 </html>
