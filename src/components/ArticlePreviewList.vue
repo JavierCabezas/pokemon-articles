@@ -2,7 +2,7 @@
     <div>
         <article class="post style1" v-for="article in articles" :id="article.id">
             <div class="image">
-                <ArticlePreviewImg :imgName="article.imgName"></ArticlePreviewImg>
+                <ArticleImage :imgName="article.imgName" :alt="article.imgAlt"></ArticleImage>
             </div>
             <div class="content">
                 <div class="inner">
@@ -26,26 +26,28 @@
 </template>
 
 <script>
-    import ArticleNav from './ArticleNav'
-    import ArticlePreviewImg from './ArticlePreviewImg'
+    import ArticleNav from "./ArticleNav"
+    import ArticleImage from "./complements/ArticleImage"
 
     export default {
-        name: 'AppPreviewList',
+        name: "AppPreviewList",
         components: {
             ArticleNav,
-            ArticlePreviewImg
+            ArticleImage
         },
         data() {
             return {
                 articles: [
                     {
-                        'id': 'one',
-                        'imgName': 'missigno_encounter.png',
-                        'title': 'Why MissingNo. clones the sixth item?',
-                        'date': 'December/2020',
-                        'route': 'missigno-sixth-item',
-                        'intro': 'One of the most well-known MissingNo. characteristics was the capability to clone the sixth item\n' +
-                            'in the players bag. The goal of this article is to know why this glitch works.'
+                        "id": "one",
+                        "imgName": "missigno_encounter.png",
+                        "imgAlt": "MissingNo. Encounter",
+                        "title": "Why MissingNo. clones the sixth item?",
+                        "date": "December/2020",
+                        "route": "missigno-sixth-item",
+                        "intro": "One of the most well-known MissingNo. characteristics was the capability to " +
+                            "clone the sixth item in the players bag. The goal of this article is to know " +
+                            "why this glitch works."
                     }
                 ]
             }
