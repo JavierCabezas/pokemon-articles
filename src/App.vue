@@ -1,15 +1,7 @@
 <template>
     <div>
-        <!-- Header -->
-        <header id="header">
-            <a href="index.html" class="logo"><strong>Binary</strong> by TEMPLATED</a>
-        </header>
-
-        <Banner/>
-
-        <!-- One -->
-        <ArticlePreviewList/>
-
+        <Header/>
+        <router-view></router-view>
         <Footer/>
     </div>
 </template>
@@ -21,21 +13,14 @@
     import '@/assets/js/main.js';
     import '@/assets/css/main.css';
 
-    import ArticlePreviewList from './components/ArticlePreviewList'
     import Footer from './components/Footer'
-    import Banner from './components/Banner'
+    import Header from './components/Header'
 
     export default {
         name: 'App',
-        data() {
-            return {
-                showArticle: false,
-            }
-        },
         components: {
-            ArticlePreviewList,
+            Header,
             Footer,
-            Banner,
         }
     }
 </script>
