@@ -8,10 +8,14 @@
             </header>
 
             <p>
-                One of the most well-known effects of encountering Missigno. is the duplication of the sixth item
+                In the first generation pokémon games Missigno. was a glitch pokémon that you could encounter and it
+                was really well known by players because of one of the effect it does: the duplication of the sixth item
                 of the player's bag. This was a really easy method to get an infinite amount of rare items such
-                as Master Balls, Rare Candies, TMs and Moon Stones.
+                as Master Balls, Rare Candies, TMs and Moon Stones. In this article I will explain why the item
+                duplication glitch works.
             </p>
+
+            <h2> Seen and captured bits </h2>
 
             <p>
                 To understand the technical reason of the item duplication the first step is to learn about how
@@ -20,6 +24,7 @@
                 captured/not captured. This creates 3 different states: non seen and non captured, seen but not captured,
                 captured and seen. The state "captured but not seen" its not possible to recreate in game.
             </p>
+
             <div class="image fit">
                 <ArticleImage alt="Pokédex" img-name="01_pokedex.png"/>
                 <blockquote>
@@ -29,6 +34,8 @@
                 </blockquote>
             </div>
 
+
+
             <h4>"Seen" bit</h4>
             <p>
                 So, if we go to the memory address <Hex hex-value="D2F7"/> you can find a byte that determine
@@ -36,9 +43,9 @@
                 current value in this memory address is <Hex hex-value="40"/>.
             </p>
             <div class="image fit">
-                <ArticleImage alt="Memory map" img-name="01_ram_01.png"/>
+                <ArticleImage alt="Memory map for seen bits" img-name="01_ram_seen.png"/>
                 <blockquote>
-                    Selected on the lower part of the picture the current value of <hex hex-value="40"/> is shown
+                    Seen bits. On the lower part of the picture the current value of <hex hex-value="40"/> is shown
                 </blockquote>
             </div>
             <p>
@@ -70,7 +77,115 @@
                     </tbody>
                 </table>
             </div>
-            <p>So, </p>
+            <p>So, this indicates that I catched squirtle but not any of the other pokémons. </p>
+
+            <h4>"Captured" bit</h4>
+            <p>
+                The captured bit works in a similar fashion. At memory address <Hex hex-value="D30A"/> there are 8 bits
+                representing the first 8 seen pokémon. In the case of my save file I have the value of
+                <Hex hex-value="41"/> at that location.
+            </p>
+
+            <div class="image fit">
+                <ArticleImage alt="Memory map for captured bits" img-name="01_ram_captured.png"/>
+                <blockquote>
+                    Captured bits. On the lower part of the picture the current value of <hex hex-value="41"/> is shown
+                </blockquote>
+            </div>
+
+            <p>If we do the same analysis as before we can conclude that <hex hex-value="41"/> =
+                <Binary binary-value="0100 0001"/>, indicating that I have seen both Bulbasaur and Squirtle (as previously
+                shown on the pokédex image).
+            </p>
+
+            <p>
+                On a side-note, and unrelated to Missigno., if you edit the bits on these areas you an actually
+                make the pokédex to show a pokémon that is captured but not yet seen.
+            </p>
+
+            <h2> So what this has to do with Missigno.? </h2>
+
+            <p>All the seen and captured bits may sound like they have nothing to do with Missigno., but they explain
+                everything.
+            </p>
+
+            <p>The memory address destinated for "captured" pokémon goes from <Hex hex-value="D30A"/> to
+                <Hex hex-value="D31C"/>. Next to that memory address is the section that stores the items (both what
+                item do the player have in their bag and their quantity), from <Hex hex-value="D31D"/> to
+                <Hex hex-value="D346"/>. As you can see they are right next to one another. See where I'm going with this?
+            </p>
+
+            <div class="image fit">
+                <ArticleImage alt="Memory map for captured bits and items" img-name="01_ram_continous.png"/>
+                <blockquote>
+                    Underlined with red are the "captured" bits. With blue are the item bits.
+                </blockquote>
+            </div>
+
+            <p>So now for the interesting part: each pokémon has a 'seen' bit according to their pokédex order, but,
+                What about Missigno.? This is a pokémon that, in theory, should never been encountered by the player.
+                Missigno. exists because in order to store all of the 151 first gen pokémon you need, at least, 8 bits
+                (if you have 7 bits you get a maximum amount of <Pow value="2" pow="7"/> = 128 pokémon and with
+                8 bits you get <Pow value="2" pow="8"/> = 256 pokémon.
+            </p>
+
+            <p>
+                So, by doing <Pow value="2" pow="8"/> - <Pow value="2" pow="7"/> = 105 avalible pokémon spaces without
+                use. Missigno. is one of these 105. So, the reason of this glitch is
+                <b>Missigno.'s seen bit corresponds to the first bit in the quantity of the sixth item in the bag</b>.
+                So when you see Missigno. the game automatically adds 128 to the quantity of the item in the sixth
+                location in the bag. Lets dive into details about this:
+            </p>
+
+            <h2> A practical example </h2>
+
+            <p>
+                I won't get into detail on how to encounter Missigno., I will assume that everyone that is interested in
+                this article knows it. (But, if you don't, Glitchpedia does an amazing job in explaining it in
+                <a href="https://errors.fandom.com/wiki/Missingno." target="_blank">This link</a>.
+            </p>
+
+            <p>
+                I'll set up an example in where I will encounter Missigno. In the sixth location of my bag I have rare
+                candies (of course I do).
+            </p>
+
+            <div class="image fit">
+                <ArticleImage alt="Sitation before Missigno." img-name="01_bits_before_missigno.png"/>
+                <blockquote>
+                    Situation before Missigno. At the memory map the value of <Hex hex-value="2802"/> is underlined.
+                    At the right two rare candies in the sixth location in my bag are shown.
+                </blockquote>
+            </div>
+
+            <p>
+                In the last picture the value of the value <Hex hex-value="2802"/>. <Hex hex-value="28"/>represents
+                the index of item (rare candy) and <Hex hex-value="02"/> the quantity. Now, lets do a missigno encounter
+                and lets see what changes.
+            </p>
+
+            <div class="image fit">
+                <ArticleImage alt="Sitation after Missigno." img-name="01_bits_after_missigno.png"/>
+                <blockquote>
+                    Situation after Missigno. At the memory map the value of <Hex hex-value="2882"/> is underlined.
+                    At the right a glitch character is shown on my rare candy quantity.
+                </blockquote>
+            </div>
+
+            <p>
+                The first value at the same memory map that we were examining changed from <Hex hex-value="2802"/> to
+                <Hex hex-value="2882"/>. The first two hexadecimal digits are still <Hex hex-value="28"/>, meaning that
+                we still have the item with index number 28 (that being rare candies). The second pair of hexadecimal
+                values, as expected, changed. It went from <Hex hex-value="02"/> (<Binary binary-value="0000 0010"/>)
+                to <Hex hex-value="82"/> (<Binary binary-value="1000 0010"/>). If we transform <Hex hex-value="82"/>.
+            </p>
+
+            <p>
+                This means that <b>Missigno.'s seen bit is the first bit of the quantity of the sixth item in the bag</b>.
+                So, If I force a new encounter with Missigno. the item quantity won't go up, because it will try to set
+                in 1 the value that was already in 1. A quantity lower than <Binary binary-value="0111 1111"/> (127) is
+                needed for the glitch to work.
+            </p>
         </div>
     </section>
 </template>
@@ -80,6 +195,7 @@
     import PokemonSpriteImage from '../complements/PokemonSpriteImage'
     import Binary from '../complements/Binary'
     import Hex from '../complements/Hex'
+    import Pow from '../complements/Pow'
 
     export default {
         name: 'WhyMissigno',
@@ -87,7 +203,8 @@
             PokemonSpriteImage,
             ArticleImage,
             Binary,
-            Hex
+            Hex,
+            Pow
         },
         data() {
             return {
