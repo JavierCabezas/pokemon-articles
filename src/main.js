@@ -9,10 +9,6 @@ Vue.use(VueRouter);
 
 Vue.config.productionTip = false;
 
-module.exports = {
-  publicPath: '/pokemon-articles/'
-};
-
 const router = new VueRouter({
   routes
 });
