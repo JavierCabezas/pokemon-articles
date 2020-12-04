@@ -9,32 +9,30 @@
 
             <p>
                 In the first generation pokémon games Missigno. was a glitch pokémon that you could encounter and it
-                was really well known by players because of one of the effect it does: the duplication of the sixth item
-                of the player's bag. This was a really easy method to get an infinite amount of rare items such
-                as Master Balls, Rare Candies, TMs and Moon Stones. In this article I will explain why the item
-                duplication glitch works.
+                was really well known by players because of one of the effect it causes: the duplication of the sixth item
+                of the player's bag when encountering this 'pokémon'. This was a really easy method to get an infinite
+                amount of rare items such as Master Balls, Rare Candies, TMs and Moon Stones. In this article I will
+                explain why the item duplication glitch works.
             </p>
 
             <h2> Seen and captured bits </h2>
 
             <p>
-                To understand the technical reason of the item duplication the first step is to learn about how
-                the game stores the pokémon pokédex data. Each pokémon on the list has two different boolean values
+                In order to understand the technical reason of the item duplication glitch the first step to understand
+                how the game stores the pokémon pokédex data. Each pokémon on the list has two different boolean values
                 related to their relationship with the player: one value for seen/unseen and another one for
                 captured/not captured. This creates 3 different states: non seen and non captured, seen but not captured,
-                captured and seen. The state "captured but not seen" its not possible to recreate in game.
+                captured and seen. The state "captured but not seen" its not possible to recreate in game (by legit means).
             </p>
 
             <div class="image fit">
                 <ArticleImage alt="Pokédex" img-name="01_pokedex.png"/>
                 <blockquote>
-                    Pokédex example. In this picture bulbasaur is seen, but not captured. Squirtle (the best
+                    Pokédex screenshoot example. In this picture bulbasaur is seen, but not captured. Squirtle (the best
                     starter) is both captured and seen. Ivysaur, venusaur, charmander, etc. are neither seen or
                     captured.
                 </blockquote>
             </div>
-
-
 
             <h4>"Seen" bit</h4>
             <p>
@@ -42,16 +40,19 @@
                 the seen bit for the 8 first pokémon (from bulbasaur to wartortle). In the case of my game, the
                 current value in this memory address is <Hex hex-value="40"/>.
             </p>
+
             <div class="image fit">
                 <ArticleImage alt="Memory map for seen bits" img-name="01_ram_seen.png"/>
                 <blockquote>
                     Seen bits. On the lower part of the picture the current value of <hex hex-value="40"/> is shown
                 </blockquote>
             </div>
+
             <p>
                 How can that be translated into the picture of the pokédex shown? If we transform the 40 from
                 hexadecimal to binary we get <Hex hex-value="40"/> = <Binary binary-value="0100 0000"/>.
             </p>
+
             <p>
                 Since the game-boy works with little endian (basically, by reading the memory in reverse) this
                 <i>seen bits</i> are translated like this table:
@@ -77,7 +78,7 @@
                     </tbody>
                 </table>
             </div>
-            <p>So, this indicates that I catched squirtle but not any of the other pokémons. </p>
+            <p>So, this indicates that, between the eight, the only captured pokémon is squirtle. </p>
 
             <h4>"Captured" bit</h4>
             <p>
@@ -93,26 +94,24 @@
                 </blockquote>
             </div>
 
-            <p>If we do the same analysis as before we can conclude that <hex hex-value="41"/> =
+            <p>
+                If we do the same analysis as before we can conclude that <hex hex-value="41"/> =
                 <Binary binary-value="0100 0001"/>, indicating that I have seen both Bulbasaur and Squirtle (as previously
                 shown on the pokédex image).
             </p>
 
-            <p>
-                On a side-note, and unrelated to Missigno., if you edit the bits on these areas you an actually
-                make the pokédex to show a pokémon that is captured but not yet seen.
-            </p>
-
             <h2> So what this has to do with Missigno.? </h2>
 
-            <p>All the seen and captured bits may sound like they have nothing to do with Missigno., but they explain
+            <p>This may sound like it has nothing to do with Missigno., but they explain
                 everything.
             </p>
 
-            <p>The memory address destinated for "captured" pokémon goes from <Hex hex-value="D30A"/> to
-                <Hex hex-value="D31C"/>. Next to that memory address is the section that stores the items (both what
-                item do the player have in their bag and their quantity), from <Hex hex-value="D31D"/> to
-                <Hex hex-value="D346"/>. As you can see they are right next to one another. See where I'm going with this?
+            <p>
+                The memory address destinated for "captured" pokémon goes from <Hex hex-value="D30A"/> to
+                <Hex hex-value="D31C"/>. Next to that memory address is the section that stores the details of the items
+                in the bag: what item do the player has in their bag and its quantity. Each of these pairs use 2 bytes
+                each, totalling 4 bytes. This section goes from <Hex hex-value="D31D"/> to <Hex hex-value="D346"/>. As
+                you can see they are right next to one another. See where I'm going with this?
             </p>
 
             <div class="image fit">
@@ -122,19 +121,21 @@
                 </blockquote>
             </div>
 
-            <p>So now for the interesting part: each pokémon has a 'seen' bit according to their pokédex order, but,
+            <p>
+                So now for the interesting part: each pokémon has a 'seen' bit according to their pokédex order, but,
                 What about Missigno.? This is a pokémon that, in theory, should never been encountered by the player.
-                Missigno. exists because in order to store all of the 151 first gen pokémon you need, at least, 8 bits
-                (if you have 7 bits you get a maximum amount of <Pow value="2" pow="7"/> = 128 pokémon and with
+                Missigno. exists because, in order to store all of the 151 first generation pokémon, you need at least 8
+                bits (if you have 7 bits you get a maximum amount of <Pow value="2" pow="7"/> = 128 pokémon and with
                 8 bits you get <Pow value="2" pow="8"/> = 256 pokémon.
             </p>
 
             <p>
                 So, by doing <Pow value="2" pow="8"/> - <Pow value="2" pow="7"/> = 105 avalible pokémon spaces without
-                use. Missigno. is one of these 105. So, the reason of this glitch is
-                <b>Missigno.'s seen bit corresponds to the first bit in the quantity of the sixth item in the bag</b>.
-                So when you see Missigno. the game automatically adds 128 to the quantity of the item in the sixth
-                location in the bag. Lets dive into details about this:
+                use. Missigno. Since MissigNo.'s number goes beyond the 151 expected pokémons numbers,
+                then its seen bit goes way beyond the expected value, getting into the bag bits. So, the reason of this
+                glitch is <b>Missigno.'s seen bit corresponds to the first bit in the quantity of the sixth item in
+                the bag</b>. So when you see Missigno. the game automatically adds 128 to the quantity of the item in
+                the sixth location in the bag. Lets dive into details about this:
             </p>
 
             <h2> A practical example </h2>
