@@ -17,7 +17,8 @@
                 of years ago, while I was studying computer science at college.
             </p>
             <ul class="actions">
-                <li><a href="#one" class="button alt scrolly big">Continue</a></li>
+                <li><router-link :to="{ name: 'about-me' }" class="button alt scrolly big">About the author</router-link></li>
+                <li><a href="#one" class="button alt scrolly big">Articles</a></li>
             </ul>
         </div>
     </section>

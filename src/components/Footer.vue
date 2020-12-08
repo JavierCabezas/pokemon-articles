@@ -9,7 +9,7 @@
             </li>
         </ul>
         <div class="copyright">
-            &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>.
+            &copyMy Nerdy Pokémon Articles. Template and design by <a href="https://templated.co">TEMPLATED</a>.
         </div>
     </footer>
 </template>
