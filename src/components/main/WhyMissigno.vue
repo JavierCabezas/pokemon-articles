@@ -187,6 +187,10 @@
                 in 1 the value that was already in 1. A quantity lower than <Binary binary-value="0111 1111"/> (127) is
                 needed for the glitch to work.
             </p>
+
+            <ul class="actions">
+                <li><router-link :to="{ name: 'home' }" class="button">Go back to Home</router-link></li>
+            </ul>
         </div>
     </section>
 </template>
