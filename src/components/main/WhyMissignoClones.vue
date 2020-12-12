@@ -3,12 +3,12 @@
         <div class="inner">
 
             <header>
-                <h1>Why Missigno. clones the sixth item?</h1>
+                <h1>Why Missingno. clones the sixth item?</h1>
                 <p class="info">December/2020 <a href="#">Javier Cabezas</a></p>
             </header>
 
             <p>
-                In the first generation pokémon games Missigno. was a glitch pokémon that you could encounter and it
+                In the first generation pokémon games Missingno. was a glitch pokémon that you could encounter and it
                 was really well known by players because of one of the effect it causes: the duplication of the sixth item
                 of the player's bag when encountering this 'pokémon'. This was a really easy method to get an infinite
                 amount of rare items such as Master Balls, Rare Candies, TMs and Moon Stones. In this article I will
@@ -100,9 +100,9 @@
                 shown on the pokédex image).
             </p>
 
-            <h2> So what this has to do with Missigno.? </h2>
+            <h2> So what this has to do with Missingno.? </h2>
 
-            <p>This may sound like it has nothing to do with Missigno., but they explain
+            <p>This may sound like it has nothing to do with Missingno., but they explain
                 everything.
             </p>
 
@@ -123,52 +123,52 @@
 
             <p>
                 So now for the interesting part: each pokémon has a 'seen' bit according to their pokédex order, but,
-                What about Missigno.? This is a pokémon that, in theory, should never been encountered by the player.
-                Missigno. exists because, in order to store all of the 151 first generation pokémon, you need at least 8
+                What about Missingno.? This is a pokémon that, in theory, should never been encountered by the player.
+                Missingno. exists because, in order to store all of the 151 first generation pokémon, you need at least 8
                 bits (if you have 7 bits you get a maximum amount of <Pow value="2" pow="7"/> = 128 pokémon and with
                 8 bits you get <Pow value="2" pow="8"/> = 256 pokémon.
             </p>
 
             <p>
                 So, by doing <Pow value="2" pow="8"/> - <Pow value="2" pow="7"/> = 105 avalible pokémon spaces without
-                use. Missigno. Since MissigNo.'s number goes beyond the 151 expected pokémons numbers,
+                use. Missingno. Since Missingno.'s number goes beyond the 151 expected pokémons numbers,
                 then its seen bit goes way beyond the expected value, getting into the bag bits. So, the reason of this
-                glitch is <b>Missigno.'s seen bit corresponds to the first bit in the quantity of the sixth item in
-                the bag</b>. So when you see Missigno. the game automatically adds 128 to the quantity of the item in
+                glitch is <b>Missingno.'s seen bit corresponds to the first bit in the quantity of the sixth item in
+                the bag</b>. So when you see Missingno. the game automatically adds 128 to the quantity of the item in
                 the sixth location in the bag. Lets dive into details about this:
             </p>
 
             <h2> A practical example </h2>
 
             <p>
-                I won't get into detail on how to encounter Missigno., I will assume that everyone that is interested in
+                I won't get into detail on how to encounter Missingno., I will assume that everyone that is interested in
                 this article knows it. (But, if you don't, Glitchpedia does an amazing job in explaining it in
                 <a href="https://errors.fandom.com/wiki/Missingno." target="_blank">This link</a>.
             </p>
 
             <p>
-                I'll set up an example in where I will encounter Missigno. In the sixth location of my bag I have rare
+                I'll set up an example in where I will encounter Missingno. In the sixth location of my bag I have rare
                 candies (of course I do).
             </p>
 
             <div class="image fit">
-                <ArticleImage alt="Sitation before Missigno." img-name="01_bits_before_missigno.png"/>
+                <ArticleImage alt="Sitation before Missingno." img-name="01_bits_before_missingno.png"/>
                 <blockquote>
-                    Situation before Missigno. At the memory map the value of <Hex hex-value="2802"/> is underlined.
+                    Situation before Missingno. At the memory map the value of <Hex hex-value="2802"/> is underlined.
                     At the right two rare candies in the sixth location in my bag are shown.
                 </blockquote>
             </div>
 
             <p>
                 In the last picture the value of the value <Hex hex-value="2802"/>. <Hex hex-value="28"/>represents
-                the index of item (rare candy) and <Hex hex-value="02"/> the quantity. Now, lets do a missigno encounter
+                the index of item (rare candy) and <Hex hex-value="02"/> the quantity. Now, lets do a Missingno encounter
                 and lets see what changes.
             </p>
 
             <div class="image fit">
-                <ArticleImage alt="Sitation after Missigno." img-name="01_bits_after_missigno.png"/>
+                <ArticleImage alt="Sitation after MissingNo." img-name="01_bits_after_missingno.png"/>
                 <blockquote>
-                    Situation after Missigno. At the memory map the value of <Hex hex-value="2882"/> is underlined.
+                    Situation after Missingno. At the memory map the value of <Hex hex-value="2882"/> is underlined.
                     At the right a glitch character is shown on my rare candy quantity.
                 </blockquote>
             </div>
@@ -182,8 +182,8 @@
             </p>
 
             <p>
-                This means that <b>Missigno.'s seen bit is the first bit of the quantity of the sixth item in the bag</b>.
-                So, If I force a new encounter with Missigno. the item quantity won't go up, because it will try to set
+                This means that <b>Missingno.'s seen bit is the first bit of the quantity of the sixth item in the bag</b>.
+                So, If I force a new encounter with Missingno. the item quantity won't go up, because it will try to set
                 in 1 the value that was already in 1. A quantity lower than <Binary binary-value="0111 1111"/> (127) is
                 needed for the glitch to work.
             </p>
@@ -203,7 +203,7 @@
     import Pow from '../complements/Pow'
 
     export default {
-        name: 'WhyMissigno',
+        name: 'WhyMissingnoClones',
         components: {
             PokemonSpriteImage,
             ArticleImage,

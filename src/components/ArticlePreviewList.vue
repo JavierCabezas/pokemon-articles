@@ -44,7 +44,7 @@
                         "imgAlt": "MissingNo. Encounter",
                         "title": "Why MissingNo. clones the sixth item?",
                         "date": "December/2020",
-                        "route": "missigno-sixth-item",
+                        "route": "clone-sixth-item",
                         "intro": "One of the most well-known MissingNo. characteristics was the capability to " +
                             "clone the sixth item in the players bag. The goal of this article is to know " +
                             "why this glitch works."

@@ -10,6 +10,9 @@ Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes
 });
 

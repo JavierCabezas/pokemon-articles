@@ -1,5 +1,5 @@
 <template>
-    <img :src="getImagePath"
+    <img :src="getImagePath()"
          :alt="alt"
          data-position="85% center"/>
 </template>
@@ -7,9 +7,9 @@
 <script>
     export default {
         props: ['imgName', 'alt'],
-        computed: {
+        methods: {
             getImagePath: function() {
-                return require(`../../images/${this.imgName}`);
+                return require("@/images/" + this.imgName);
             },
         }
     }
