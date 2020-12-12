@@ -1,6 +1,10 @@
 <template>
     <div>
-        <article class="post style1" v-for="article in articles" :id="article.id">
+        <article v-for="article in articles"
+                 class="post invert style4"
+                 :class="article.number%2===0?'alt':''"
+                 :id="article.id"
+        >
             <div class="image">
                 <ArticleImage :imgName="article.imgName" :alt="article.imgAlt"></ArticleImage>
             </div>
@@ -10,7 +14,9 @@
                         <h2>
                             <router-link :to="{ name: article.route }"> {{article.title}}</router-link>
                         </h2>
-                        <p class="info">{{article.date}} <a href="#">Javier Cabezas</a></p>
+                        <p class="info">{{article.date}}
+                            <router-link :to="{ name: 'about-me'}">Javier Cabezas</router-link>
+                        </p>
                     </header>
                     <p>{{article.intro}}</p>
                     <ul class="actions">
@@ -27,7 +33,7 @@
 
 <script>
     import ArticleNav from "./ArticleNav"
-    import ArticleImage from "./complements/ArticleImage"
+    import ArticleImage from "../complements/ArticleImage"
 
     export default {
         name: "AppPreviewList",
@@ -40,8 +46,22 @@
                 articles: [
                     {
                         "id": "one",
+                        "number": 1,
                         "imgName": "missigno_encounter.png",
                         "imgAlt": "MissingNo. Encounter",
+                        "title": "Why is MissingNo. encountered?",
+                        "date": "December/2020",
+                        "route": "why-missigno-exists",
+                        "intro": "One of the most well-known first generation pokémon games glitches is MissingNo." +
+                            "It is known for things like having the 'bird' (not flying) type, glitching your hall " +
+                            "of fame, cloning your items, among others. This article goes into detail of why this " +
+                            "pokémon exists and why its accompanied with random (glitch or regular) pokémon."
+                    },
+                    {
+                        "id": "two",
+                        "number": 2,
+                        "imgName": "sixth_item_clone.png",
+                        "imgAlt": "Sixth item clone",
                         "title": "Why MissingNo. clones the sixth item?",
                         "date": "December/2020",
                         "route": "clone-sixth-item",

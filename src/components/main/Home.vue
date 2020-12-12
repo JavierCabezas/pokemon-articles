@@ -7,7 +7,7 @@
 
 <script>
     import Banner from '../Banner'
-    import ArticlePreviewList from '../ArticlePreviewList'
+    import ArticlePreviewList from '../main/ArticlePreviewList'
 
     export default {
         name: 'App',
