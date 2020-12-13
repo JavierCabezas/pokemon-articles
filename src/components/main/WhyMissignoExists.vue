@@ -75,9 +75,9 @@
 
             <p>
                 So, in the memory map from
-                <Hex hex-value="D888"/>
+                <Hex val="D888"/>
                 to
-                <Hex hex-value="D89B"/>
+                <Hex val="D89B"/>
                 there are multiple
                 pair of bytes in the format of pokemon_level:pokemon_index. Both the pokémon level and pokémon index
                 are a byte. A good list of indexes can be found in <a :href="link_bulbapedia">bulbapedia</a>.
@@ -85,7 +85,7 @@
 
             <p>
                 So, if, for example, we are in a fictional area in the game in where level 15 grimers (index
-                <Hex hex-value="0D"/>) and level 20 dratinis (index <Hex hex-value="58"/>) can be found the value would be:
+                <Hex val="0D"/>) and level 20 dratinis (index <Hex val="58"/>) can be found the value would be:
             </p>
 
             <div class="table-wrapper">
@@ -100,10 +100,10 @@
                     </tr>
                     <tr>
                         <td><b>In memory</b></td>
-                        <td><Hex hex-value="0F"/></td>
-                        <td><Hex hex-value="0D"/></td>
-                        <td><Hex hex-value="14"/></td>
-                        <td><Hex hex-value="58"/></td>
+                        <td><Hex val="0F"/></td>
+                        <td><Hex val="0D"/></td>
+                        <td><Hex val="14"/></td>
+                        <td><Hex val="58"/></td>
                     </tr>
                     </tbody>
                 </table>
@@ -158,25 +158,72 @@
                     </tr>
                     <tr>
                         <td><b>In memory</b></td>
-                        <td><Hex hex-value="66"/></td> <!-- lv 102 -->
-                        <td><Hex hex-value="0F"/></td> <!-- nidoran f -->
-                        <td><Hex hex-value="89"/></td> <!-- lv 137 -->
-                        <td><Hex hex-value="8E"/></td> <!-- clefable -->
-                        <td><Hex hex-value="38"/></td> <!-- lv 56 -->
-                        <td><Hex hex-value="21"/></td> <!-- growlite -->
-                        <td><Hex hex-value="50"/></td> <!-- lv 80 -->
-                        <td><Hex hex-value="BB"/></td> <!-- vileplume -->
+                        <td><Hex val="66"/></td> <!-- lv 102 -->
+                        <td><Hex val="0F"/></td> <!-- nidoran f -->
+                        <td><Hex val="89"/></td> <!-- lv 137 -->
+                        <td><Hex val="8E"/></td> <!-- clefable -->
+                        <td><Hex val="38"/></td> <!-- lv 56 -->
+                        <td><Hex val="21"/></td> <!-- growlite -->
+                        <td><Hex val="50"/></td> <!-- lv 80 -->
+                        <td><Hex val="BB"/></td> <!-- vileplume -->
                     </tr>
                     </tbody>
                 </table>
             </div>
 
             <p>
-                <span class="image left">
-                    <ArticleImage img-name="02_old_man.png" alt="Old man in Viridian City"/>
-                </span>
-                So I placed <Hex hex-value="660F898E382150BB"/> at the players name section.
+                The player name is stored on the memory from <Hex val="D158"/> to <Hex val="D162"/> so I placed
+                <Hex val="660F898E382150BB"/> at the players name section.
             </p>
+
+            <div class="image fit">
+                <ArticleImage img-name="02_custom_name_in_memory.png" alt="Copying the name in the memory"/>
+                <blockquote>
+                    Captured bits. On the lower part of the picture the current value of <hex val="41"/> is shown
+                </blockquote>
+            </div>
+
+            <p>
+                So after talking with the old man we are going to check the memory area starting
+                from <Hex val="D888"/> (in where the random pokémon area is stored).
+            </p>
+
+            <div class="image fit">
+                <ArticleImage img-name="02_custom_name_in_pokemon_area.png" alt="Copying the name in the memory"/>
+                <blockquote>
+                    Copied bits on the random pokémon section.
+                </blockquote>
+            </div>
+
+            <p>
+                So <b>the players name was copied to the wild pokémon area</b>. And after going up and down in Cinnabar's
+                coast this is what we are going to find:
+            </p>
+
+            <div class="box alt">
+                <div class="row 50% uniform">
+                    <div class="3u">
+                        <span class="image fit">
+                            <ArticleImage img-name="02_random_nidoran.png" alt="Nidoran"/>
+                        </span>
+                    </div>
+                    <div class="3u">
+                        <span class="image fit">
+                            <ArticleImage img-name="02_random_clefable.png" alt="Clefable"/>
+                        </span>
+                    </div>
+                    <div class="3u">
+                        <span class="image fit">
+                           <ArticleImage img-name="02_random_growlithe.png" alt="Growlithe"/>
+                        </span>
+                    </div>
+                    <div class="3u$">
+                        <span class="image fit">
+                            <ArticleImage img-name="02_random_villeplume.png" alt="Villeplume"/>
+                        </span>
+                    </div>
+                </div>
+            </div>
 
 
             <ul class="actions">

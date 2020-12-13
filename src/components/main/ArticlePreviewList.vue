@@ -6,7 +6,9 @@
                  :id="article.id"
         >
             <div class="image">
-                <ArticleImage :imgName="article.imgName" :alt="article.imgAlt"></ArticleImage>
+                <img :src="imgSource(article.imgName)"
+                     :alt="article.imgAlt"
+                />
             </div>
             <div class="content">
                 <div class="inner">
@@ -38,8 +40,12 @@
     export default {
         name: "AppPreviewList",
         components: {
-            ArticleNav,
-            ArticleImage
+            ArticleNav
+        },
+        methods: {
+            imgSource: function(imgName) {
+                return require("@/images/" + imgName);
+            }
         },
         data() {
             return {

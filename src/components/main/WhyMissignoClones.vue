@@ -36,21 +36,21 @@
 
             <h4>"Seen" bit</h4>
             <p>
-                So, if we go to the memory address <Hex hex-value="D2F7"/> you can find a byte that determine
+                So, if we go to the memory address <Hex val="D2F7"/> you can find a byte that determine
                 the seen bit for the 8 first pokémon (from bulbasaur to wartortle). In the case of my game, the
-                current value in this memory address is <Hex hex-value="40"/>.
+                current value in this memory address is <Hex val="40"/>.
             </p>
 
             <div class="image fit">
                 <ArticleImage alt="Memory map for seen bits" img-name="01_ram_seen.png"/>
                 <blockquote>
-                    Seen bits. On the lower part of the picture the current value of <hex hex-value="40"/> is shown
+                    Seen bits. On the lower part of the picture the current value of <hex val="40"/> is shown
                 </blockquote>
             </div>
 
             <p>
                 How can that be translated into the picture of the pokédex shown? If we transform the 40 from
-                hexadecimal to binary we get <Hex hex-value="40"/> = <Binary binary-value="0100 0000"/>.
+                hexadecimal to binary we get <Hex val="40"/> = <Binary val="0100 0000"/>.
             </p>
 
             <p>
@@ -82,21 +82,21 @@
 
             <h4>"Captured" bit</h4>
             <p>
-                The captured bit works in a similar fashion. At memory address <Hex hex-value="D30A"/> there are 8 bits
+                The captured bit works in a similar fashion. At memory address <Hex val="D30A"/> there are 8 bits
                 representing the first 8 seen pokémon. In the case of my save file I have the value of
-                <Hex hex-value="41"/> at that location.
+                <Hex val="41"/> at that location.
             </p>
 
             <div class="image fit">
                 <ArticleImage alt="Memory map for captured bits" img-name="01_ram_captured.png"/>
                 <blockquote>
-                    Captured bits. On the lower part of the picture the current value of <hex hex-value="41"/> is shown
+                    Captured bits. On the lower part of the picture the current value of <hex val="41"/> is shown
                 </blockquote>
             </div>
 
             <p>
-                If we do the same analysis as before we can conclude that <hex hex-value="41"/> =
-                <Binary binary-value="0100 0001"/>, indicating that I have seen both Bulbasaur and Squirtle (as previously
+                If we do the same analysis as before we can conclude that <hex val="41"/> =
+                <Binary val="0100 0001"/>, indicating that I have seen both Bulbasaur and Squirtle (as previously
                 shown on the pokédex image).
             </p>
 
@@ -107,10 +107,10 @@
             </p>
 
             <p>
-                The memory address destinated for "captured" pokémon goes from <Hex hex-value="D30A"/> to
-                <Hex hex-value="D31C"/>. Next to that memory address is the section that stores the details of the items
+                The memory address destinated for "captured" pokémon goes from <Hex val="D30A"/> to
+                <Hex val="D31C"/>. Next to that memory address is the section that stores the details of the items
                 in the bag: what item do the player has in their bag and its quantity. Each of these pairs use 2 bytes
-                each, totalling 4 bytes. This section goes from <Hex hex-value="D31D"/> to <Hex hex-value="D346"/>. As
+                each, totalling 4 bytes. This section goes from <Hex val="D31D"/> to <Hex val="D346"/>. As
                 you can see they are right next to one another. See where I'm going with this?
             </p>
 
@@ -154,37 +154,37 @@
             <div class="image fit">
                 <ArticleImage alt="Sitation before Missingno." img-name="01_bits_before_missingno.png"/>
                 <blockquote>
-                    Situation before Missingno. At the memory map the value of <Hex hex-value="2802"/> is underlined.
+                    Situation before Missingno. At the memory map the value of <Hex val="2802"/> is underlined.
                     At the right two rare candies in the sixth location in my bag are shown.
                 </blockquote>
             </div>
 
             <p>
-                In the last picture the value of the value <Hex hex-value="2802"/>. <Hex hex-value="28"/>represents
-                the index of item (rare candy) and <Hex hex-value="02"/> the quantity. Now, lets do a Missingno encounter
+                In the last picture the value of the value <Hex val="2802"/>. <Hex val="28"/>represents
+                the index of item (rare candy) and <Hex val="02"/> the quantity. Now, lets do a Missingno encounter
                 and lets see what changes.
             </p>
 
             <div class="image fit">
                 <ArticleImage alt="Sitation after MissingNo." img-name="01_bits_after_missingno.png"/>
                 <blockquote>
-                    Situation after Missingno. At the memory map the value of <Hex hex-value="2882"/> is underlined.
+                    Situation after Missingno. At the memory map the value of <Hex val="2882"/> is underlined.
                     At the right a glitch character is shown on my rare candy quantity.
                 </blockquote>
             </div>
 
             <p>
-                The first value at the same memory map that we were examining changed from <Hex hex-value="2802"/> to
-                <Hex hex-value="2882"/>. The first two hexadecimal digits are still <Hex hex-value="28"/>, meaning that
+                The first value at the same memory map that we were examining changed from <Hex val="2802"/> to
+                <Hex val="2882"/>. The first two hexadecimal digits are still <Hex val="28"/>, meaning that
                 we still have the item with index number 28 (that being rare candies). The second pair of hexadecimal
-                values, as expected, changed. It went from <Hex hex-value="02"/> (<Binary binary-value="0000 0010"/>)
-                to <Hex hex-value="82"/> (<Binary binary-value="1000 0010"/>). If we transform <Hex hex-value="82"/>.
+                values, as expected, changed. It went from <Hex val="02"/> (<Binary val="0000 0010"/>)
+                to <Hex val="82"/> (<Binary val="1000 0010"/>). If we transform <Hex val="82"/>.
             </p>
 
             <p>
                 This means that <b>Missingno.'s seen bit is the first bit of the quantity of the sixth item in the bag</b>.
                 So, If I force a new encounter with Missingno. the item quantity won't go up, because it will try to set
-                in 1 the value that was already in 1. A quantity lower than <Binary binary-value="0111 1111"/> (127) is
+                in 1 the value that was already in 1. A quantity lower than <Binary val="0111 1111"/> (127) is
                 needed for the glitch to work.
             </p>
 
