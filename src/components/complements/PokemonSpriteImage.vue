@@ -29,7 +29,13 @@
                     5: 'charmeleon',
                     6: 'charizard',
                     7: 'squirtle',
-                    8: 'wartortle'
+                    8: 'wartortle',
+                    29: 'nidoranf',
+                    36: 'clefable',
+                    45: 'vileplume',
+                    58: 'growlithe',
+                    88: 'grimer',
+                    147: 'dratini'
                 }
             }
         }
